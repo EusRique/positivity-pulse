@@ -40,3 +40,13 @@ Este projeto segue a **arquitetura Ports and Adapters**, também conhecida como 
    ```bash
    git clone https://github.com/seu-usuario/positivity-pulse.git
    cd positivity-pulse
+2. **Tendo o docker instalado em sua máquina apenas execute:**
+
+   `docker-compose up -d`
+   - Certifique-se de que o `RabbitMQ` e o `PostgreSQL` estão em execução na sua máquina local ou em um ambiente configurado.
+   - Configure as credenciais do RabbitMQ e PostgreSQL no código conforme necessário.
+3. **Rodando o projeto:**
+   Para rodar o backend (Go API):
+   
+   ```bash
+   go run cmd/main.go

@@ -1,6 +1,7 @@
 package web
 
 import (
+	"encoding/json"
 	"fmt"
 	"net/http"
 
@@ -40,8 +41,14 @@ func HandleConnections(w http.ResponseWriter, r *http.Request) {
 
 func NotifyFrontend(msg string) {
 	// Envia a mensagem para todos os clientes conectados
+	jsonMsg, err := json.Marshal(map[string]string{"message": msg})
+	if err != nil {
+		fmt.Println("Error encoding JSON:", err)
+		return
+	}
+
 	for client := range clients {
-		if err := client.WriteMessage(websocket.TextMessage, []byte(msg)); err != nil {
+		if err := client.WriteMessage(websocket.TextMessage, jsonMsg); err != nil {
 			fmt.Println("Error sending message to client:", err)
 			client.Close()
 			delete(clients, client) // Remove cliente desconectado ou com erro
