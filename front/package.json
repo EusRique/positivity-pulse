@@ -1,0 +1,49 @@
+{
+  "name": "starter-kit-vue-ts-tailwindcss",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc -b && vite build",
+    "lint": "eslint --ext .js,.vue,.ts src",
+    "lint:fix": "eslint --ext .js,.vue,.ts src --fix",
+    "biome": "npx biome lint",
+    "preview": "vite preview"
+  },
+  "lint-staged": {
+    "*.js": "eslint --fix",
+    "*.ts": "eslint --fix",
+    "*.vue": "eslint --fix"
+  },
+  "simple-git-hooks": {
+    "commit-msg": "npx commitlint --edit ${1}",
+    "pre-commit": "npx lint-staged"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "^4.0.6",
+    "socket.io-client": "^4.8.1",
+    "tailwindcss": "^4.0.6",
+    "vue": "^3.5.13"
+  },
+  "devDependencies": {
+    "@commitlint/config-conventional": "^19.7.1",
+    "@typescript-eslint/eslint-plugin": "^8.24.0",
+    "@typescript-eslint/parser": "^8.24.0",
+    "@vitejs/plugin-vue": "^5.2.1",
+    "@vue/tsconfig": "^0.7.0",
+    "commitlint": "^19.7.1",
+    "eslint": "^8.57.1",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^10.0.1",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-prettier": "^5.2.3",
+    "eslint-plugin-vue": "^9.32.0",
+    "lint-staged": "^15.4.3",
+    "prettier": "^3.5.0",
+    "simple-git-hooks": "^2.11.1",
+    "typescript": "~5.7.2",
+    "vite": "^6.1.0",
+    "vue-tsc": "^2.2.0"
+  }
+}

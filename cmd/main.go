@@ -4,21 +4,22 @@ import (
 	"net/http"
 	"positivitypulse/internal/adapters"
 	"positivitypulse/web"
+	"time"
 
 	"github.com/gin-gonic/gin"
 )
 
-// func StartScheduler() {
-// 	ticker := time.NewTicker(10 * time.Second) // Ajuste para o tempo desejado
-// 	defer ticker.Stop()
+func StartScheduler() {
+	ticker := time.NewTicker(1 * time.Second) // Ajuste para o tempo desejado
+	defer ticker.Stop()
 
-// 	for {
-// 		select {
-// 		case <-ticker.C:
-// 			adapters.FetchAdviceAndPublish()
-// 		}
-// 	}
-// }
+	for {
+		select {
+		case <-ticker.C:
+			adapters.FetchAdviceAndPublish()
+		}
+	}
+}
 
 func main() {
 	adapters.InitRabbitMQ()
@@ -42,7 +43,7 @@ func main() {
 	})
 
 	go adapters.ConsumeMessages()
-	// go StartScheduler()
+	//go StartScheduler()
 
 	r.Run(":3000")
 }
